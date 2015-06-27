@@ -3,7 +3,7 @@ package Perl::Critic::Freenode;
 use strict;
 use warnings;
 
-our $VERSION = '0.001';
+our $VERSION = '0.002';
 
 1;
 
@@ -19,8 +19,8 @@ freenode IRC
 
 =head1 DESCRIPTION
 
-A set of L<Perl::Critic> policies to enforce the practices generally considered
-acceptable by the denizens of #perl on L<Freenode IRC|https://freenode.net/>.
+A set of L<Perl::Critic> policies to enforce the practices generally
+recommended by the denizens of #perl on L<Freenode IRC|https://freenode.net/>.
 
 =head1 AFFILIATION
 
@@ -33,53 +33,57 @@ announcing their participation in this grouping.
 
 =over
 
+=item L<Perl::Critic::Policy::Freenode::AmpersandSubCalls>
+
+Don't use C<&> to call subroutines
+
 =item L<Perl::Critic::Policy::Freenode::BarewordFilehandles>
 
-Don't use bareword filehandles other than built-ins.
+Don't use bareword filehandles other than built-ins
 
 =item L<Perl::Critic::Policy::Freenode::DiscouragedModules>
 
-Various modules discouraged from use.
+Various modules discouraged from use
 
 =item L<Perl::Critic::Policy::Freenode::DollarAB>
 
-Don't use C<$a> or C<$b> as variable names outside C<sort()>.
+Don't use C<$a> or C<$b> as variable names outside C<sort()>
 
 =item L<Perl::Critic::Policy::Freenode::EmptyReturn>
 
-Don't use C<return()> with no arguments.
+Don't use C<return()> with no arguments
 
 =item L<Perl::Critic::Policy::Freenode::ModPerl>
 
-Don't use C<mod_perl> to write web applications.
+Don't use C<mod_perl> to write web applications
 
 =item L<Perl::Critic::Policy::Freenode::OpenArgs>
 
-Always use the three-argument form of C<open()>.
+Always use the three-argument form of C<open()>
 
 =item L<Perl::Critic::Policy::Freenode::Prototypes>
 
-Don't use function prototypes.
+Don't use function prototypes
 
 =item L<Perl::Critic::Policy::Freenode::StrictWarnings>
 
-Always use L<strict> and L<warnings>, or a module that imports these.
+Always use L<strict> and L<warnings>, or a module that imports these
 
 =item L<Perl::Critic::Policy::Freenode::Threads>
 
-Interpreter-based threads are officially discouraged.
+Interpreter-based threads are officially discouraged
 
 =item L<Perl::Critic::Policy::Freenode::Wantarray>
 
-Don't write context-sensitive functions using C<wantarray()>.
+Don't write context-sensitive functions using C<wantarray()>
 
 =item L<Perl::Critic::Policy::Freenode::WarningsSwitch>
 
-Scripts should not use the C<-w> switch on the shebang line.
+Scripts should not use the C<-w> switch on the shebang line
 
 =item L<Perl::Critic::Policy::Freenode::WhileDiamondDefaultAssignment>
 
-Don't use C<while (E<lt>E<gt>)> with implicit assignment to C<$_>.
+Don't use C<while (E<lt>E<gt>)> with implicit assignment to C<$_>
 
 =back
 

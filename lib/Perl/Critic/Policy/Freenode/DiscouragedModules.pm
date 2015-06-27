@@ -7,7 +7,7 @@ use Perl::Critic::Utils qw(:severities :classification :ppi);
 use Perl::Critic::Violation;
 use parent 'Perl::Critic::Policy';
 
-our $VERSION = '0.001';
+our $VERSION = '0.002';
 
 sub supported_parameters { () }
 sub default_severity { $SEVERITY_HIGH }
@@ -77,7 +77,8 @@ sub violates {
 
 =head1 NAME
 
-Perl::Critic::Policy::Freenode::DiscouragedModules
+Perl::Critic::Policy::Freenode::DiscouragedModules - Various modules
+discouraged from use
 
 =head1 DESCRIPTION
 

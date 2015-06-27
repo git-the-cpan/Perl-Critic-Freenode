@@ -9,6 +9,7 @@ README
 cpanfile
 dist.ini
 lib/Perl/Critic/Freenode.pm
+lib/Perl/Critic/Policy/Freenode/AmpersandSubCalls.pm
 lib/Perl/Critic/Policy/Freenode/BarewordFilehandles.pm
 lib/Perl/Critic/Policy/Freenode/DiscouragedModules.pm
 lib/Perl/Critic/Policy/Freenode/DollarAB.pm
@@ -21,6 +22,7 @@ lib/Perl/Critic/Policy/Freenode/Threads.pm
 lib/Perl/Critic/Policy/Freenode/Wantarray.pm
 lib/Perl/Critic/Policy/Freenode/WarningsSwitch.pm
 lib/Perl/Critic/Policy/Freenode/WhileDiamondDefaultAssignment.pm
+t/Freenode/AmpersandSubCalls.run
 t/Freenode/BarewordFilehandles.run
 t/Freenode/DiscouragedModules.run
 t/Freenode/DollarAB.run

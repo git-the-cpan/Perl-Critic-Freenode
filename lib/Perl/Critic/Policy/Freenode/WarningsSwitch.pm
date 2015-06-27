@@ -6,7 +6,7 @@ use warnings;
 use Perl::Critic::Utils qw(:severities :classification :ppi);
 use parent 'Perl::Critic::Policy';
 
-our $VERSION = '0.001';
+our $VERSION = '0.002';
 
 use constant DESC => 'Using -w switch';
 use constant EXPL => 'Don\'t use -w, it\'s too eager. use warnings; instead.';
@@ -30,7 +30,8 @@ sub violates {
 
 =head1 NAME
 
-Perl::Critic::Policy::Freenode::WarningsSwitch
+Perl::Critic::Policy::Freenode::WarningsSwitch - Scripts should not use the -w
+switch on the shebang line
 
 =head1 DESCRIPTION
 

@@ -6,7 +6,7 @@ use warnings;
 use Perl::Critic::Utils qw(:severities :classification :ppi);
 use parent 'Perl::Critic::Policy';
 
-our $VERSION = '0.001';
+our $VERSION = '0.002';
 
 use constant DESC => 'Using bareword filehandles';
 use constant EXPL => 'Bareword filehandles are a legacy feature, creating the filehandles as package variables. Use lexical, scoped filehandles instead (open my $fh, ...).';
@@ -56,7 +56,8 @@ sub violates {
 
 =head1 NAME
 
-Perl::Critic::Policy::Freenode::BarewordFilehandles
+Perl::Critic::Policy::Freenode::BarewordFilehandles - Don't use bareword
+filehandles other than built-ins
 
 =head1 DESCRIPTION
 

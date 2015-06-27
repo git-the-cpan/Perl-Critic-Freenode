@@ -6,7 +6,7 @@ use warnings;
 use Perl::Critic::Utils qw(:severities :classification :ppi);
 use parent 'Perl::Critic::Policy';
 
-our $VERSION = '0.001';
+our $VERSION = '0.002';
 
 use constant DESC => 'open() called with less than 3 arguments';
 use constant EXPL => 'The one- and two-argument forms of open() parse functionality from the filename, use the three-argument form instead.';
@@ -30,7 +30,8 @@ sub violates {
 
 =head1 NAME
 
-Perl::Critic::Policy::Freenode::OpenArgs
+Perl::Critic::Policy::Freenode::OpenArgs - Always use the three-argument form
+of open
 
 =head1 DESCRIPTION
 

@@ -6,7 +6,7 @@ use warnings;
 use Perl::Critic::Utils qw(:severities :classification :ppi);
 use parent 'Perl::Critic::Policy';
 
-our $VERSION = '0.001';
+our $VERSION = '0.002';
 
 use constant DESC => 'wantarray() called';
 use constant EXPL => 'Context-sensitive functions lead to unexpected errors or vulnerabilities. Functions should explicitly return either a list or a scalar value.';
@@ -26,7 +26,8 @@ sub violates {
 
 =head1 NAME
 
-Perl::Critic::Policy::Freenode::Wantarray
+Perl::Critic::Policy::Freenode::Wantarray - Don't write context-sensitive
+functions using wantarray
 
 =head1 DESCRIPTION
 

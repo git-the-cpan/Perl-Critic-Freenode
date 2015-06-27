@@ -8,7 +8,7 @@ use parent 'Perl::Critic::Policy';
 
 use List::Util 'any';
 
-our $VERSION = '0.001';
+our $VERSION = '0.002';
 
 use constant DESC => 'Missing strict or warnings';
 use constant EXPL => 'The strict and warnings pragmas are important to avoid common pitfalls and deprecated/experimental functionality.';
@@ -59,7 +59,8 @@ sub violates {
 
 =head1 NAME
 
-Perl::Critic::Policy::Freenode::StrictWarnings
+Perl::Critic::Policy::Freenode::StrictWarnings - Always use strict and
+warnings, or a module that imports these
 
 =head1 DESCRIPTION
 

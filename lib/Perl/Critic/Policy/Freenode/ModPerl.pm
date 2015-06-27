@@ -6,7 +6,7 @@ use warnings;
 use Perl::Critic::Utils qw(:severities :classification :ppi);
 use parent 'Perl::Critic::Policy';
 
-our $VERSION = '0.001';
+our $VERSION = '0.002';
 
 use constant DESC => 'Using mod_perl';
 use constant EXPL => 'mod_perl is not designed for writing Perl web applications. Try a Plack-based framework (Web::Simple, Dancer2, Catalyst) or Mojolicious for a modern approach.';
@@ -37,7 +37,8 @@ sub violates {
 
 =head1 NAME
 
-Perl::Critic::Policy::Freenode::ModPerl
+Perl::Critic::Policy::Freenode::ModPerl - Don't use mod_perl to write web
+applications
 
 =head1 DESCRIPTION
 

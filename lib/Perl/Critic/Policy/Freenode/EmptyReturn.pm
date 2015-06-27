@@ -8,7 +8,7 @@ use parent 'Perl::Critic::Policy';
 
 use List::Util 'any';
 
-our $VERSION = '0.001';
+our $VERSION = '0.002';
 
 use constant DESC => 'return() called with no arguments';
 use constant EXPL => 'return() with no arguments may return either undef or an empty list depending on context. This can be surprising for the same reason as other context-sensitive returns. Return undef or the empty list explicitly.';
@@ -33,7 +33,8 @@ sub violates {
 
 =head1 NAME
 
-Perl::Critic::Policy::Freenode::EmptyReturn
+Perl::Critic::Policy::Freenode::EmptyReturn - Don't use return with no
+arguments
 
 =head1 DESCRIPTION
 

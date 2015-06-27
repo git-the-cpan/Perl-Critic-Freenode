@@ -6,7 +6,7 @@ use warnings;
 use Perl::Critic::Utils qw(:severities :classification :ppi);
 use parent 'Perl::Critic::Policy';
 
-our $VERSION = '0.001';
+our $VERSION = '0.002';
 
 use constant DESC => 'Using $a or $b outside sort()';
 use constant EXPL => '$a and $b are special package variables for use in sort() and related functions. Declaring them as lexicals like "my $a" may break sort(). Use different variable names.';
@@ -57,7 +57,8 @@ sub _find_sorter {
 
 =head1 NAME
 
-Perl::Critic::Policy::Freenode::DollarAB
+Perl::Critic::Policy::Freenode::DollarAB - Don't use $a or $b as variable names
+outside sort
 
 =head1 DESCRIPTION
 

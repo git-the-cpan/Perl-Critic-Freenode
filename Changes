@@ -1,2 +1,6 @@
+0.002     2015-06-27 00:07:19 EDT
+  - add AmpersandSubCalls policy
+  - add policy abstracts
+
 0.001     2015-06-26 21:01:32 EDT
   - First release
