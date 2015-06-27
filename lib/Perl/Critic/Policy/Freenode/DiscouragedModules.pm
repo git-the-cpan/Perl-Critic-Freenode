@@ -7,7 +7,7 @@ use Perl::Critic::Utils qw(:severities :classification :ppi);
 use Perl::Critic::Violation;
 use parent 'Perl::Critic::Policy';
 
-our $VERSION = '0.002';
+our $VERSION = '0.003';
 
 sub supported_parameters { () }
 sub default_severity { $SEVERITY_HIGH }
@@ -16,7 +16,7 @@ sub applies_to { 'PPI::Statement::Include' }
 
 my %modules = (
 	'AnyEvent' => {
-		expl => 'AnyEvent\'s author refuses to use public bugtracking and actively breaks interoperability. See POE, IO::Async, and Mojolicious for sane and interoperable async event loops.',
+		expl => 'AnyEvent\'s author refuses to use public bugtracking and actively breaks interoperability. POE, IO::Async, and Mojo::IOLoop are widely used and interoperable async event loops.',
 	},
 	'Any::Moose' => {
 		expl => 'Any::Moose is deprecated. Use Moo instead.',
@@ -31,7 +31,7 @@ my %modules = (
 		expl => 'File::Slurp gets file encodings all wrong, line endings on win32 are messed up, and it was written before layers were properly added. Use File::Slurp::Tiny, File::Slurper, Path::Tiny, Data::Munge, or Mojo::Util.',
 	},
 	'HTML::Template' => {
-		expl => 'HTML::Template is an old and buggy module, try Template Toolkit or HTML::Zoom instead.',
+		expl => 'HTML::Template is an old and buggy module, try Template Toolkit or HTML::Zoom instead, or HTML::Template::Pro if you must use the same syntax.',
 	},
 	'JSON' => {
 		expl => 'JSON.pm is old and full of slow logic. Use JSON::MaybeXS instead, it is a drop-in replacement in most cases.',
@@ -41,7 +41,7 @@ my %modules = (
 		expl => 'JSON::Any is deprecated. Use JSON::MaybeXS instead.',
 	},
 	'JSON::XS' => {
-		expl => 'JSON::XS\'s author refuses to use public bugtracking and actively breaks interoperability. Cpanel::JSON::XS is a fork with several bugfixes and a sane maintainer. See also JSON::MaybeXS.',
+		expl => 'JSON::XS\'s author refuses to use public bugtracking and actively breaks interoperability. Cpanel::JSON::XS is a fork with several bugfixes and a more collaborative maintainer. See also JSON::MaybeXS.',
 	},
 	'List::MoreUtils' => {
 		expl => 'List::MoreUtils is a far more complex distribution than it needs to be. See List::Util or List::UtilsBy for better options.',
@@ -91,7 +91,7 @@ or simply better modern replacements.
 =head2 AnyEvent
 
 L<AnyEvent>'s author refuses to use public bugtracking and actively breaks
-interoperability. See L<POE>, L<IO::Async>, and L<Mojo::IOLoop> for sane and
+interoperability. L<POE>, L<IO::Async>, and L<Mojo::IOLoop> are widely used and
 interoperable async event loops.
 
 =head2 Any::Moose
@@ -120,7 +120,8 @@ L<Data::Munge/"slurp">, or L<Mojo::Util/"slurp">.
 =head2 HTML::Template
 
 L<HTML::Template> is an old and buggy module, try L<Template::Toolkit> or
-L<HTML::Zoom> instead.
+L<HTML::Zoom> instead, or L<HTML::Template::Pro> if you must use the same
+syntax.
 
 =head2 JSON
 
@@ -135,7 +136,7 @@ L<JSON::Any> is deprecated. Use L<JSON::MaybeXS> instead.
 
 L<JSON::XS>'s author refuses to use public bugtracking and actively breaks
 interoperability. L<Cpanel::JSON::XS> is a fork with several bugfixes and a
-sane maintainer. See also L<JSON::MaybeXS>.
+more collaborative maintainer. See also L<JSON::MaybeXS>.
 
 =head2 List::MoreUtils
 

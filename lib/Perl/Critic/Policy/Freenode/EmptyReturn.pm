@@ -8,7 +8,7 @@ use parent 'Perl::Critic::Policy';
 
 use List::Util 'any';
 
-our $VERSION = '0.002';
+our $VERSION = '0.003';
 
 use constant DESC => 'return() called with no arguments';
 use constant EXPL => 'return() with no arguments may return either undef or an empty list depending on context. This can be surprising for the same reason as other context-sensitive returns. Return undef or the empty list explicitly.';
@@ -43,7 +43,7 @@ What I Mean), tend to instead lead to unexpected behavior when the function is
 accidentally used in a different context, especially if the function's behavior
 changes significantly based on context. This also can lead to vulnerabilities
 when a function is intended to be used as a scalar, but is used in a list, such
-as a hash constructor or function parameter list. C<return()> with no arguments
+as a hash constructor or function parameter list. C<return> with no arguments
 will return either C<undef> or an empty list depending on context. Instead,
 return the appropriate value explicitly.
 

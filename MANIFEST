@@ -13,6 +13,7 @@ lib/Perl/Critic/Policy/Freenode/AmpersandSubCalls.pm
 lib/Perl/Critic/Policy/Freenode/BarewordFilehandles.pm
 lib/Perl/Critic/Policy/Freenode/DiscouragedModules.pm
 lib/Perl/Critic/Policy/Freenode/DollarAB.pm
+lib/Perl/Critic/Policy/Freenode/Each.pm
 lib/Perl/Critic/Policy/Freenode/EmptyReturn.pm
 lib/Perl/Critic/Policy/Freenode/ModPerl.pm
 lib/Perl/Critic/Policy/Freenode/OpenArgs.pm
@@ -26,6 +27,7 @@ t/Freenode/AmpersandSubCalls.run
 t/Freenode/BarewordFilehandles.run
 t/Freenode/DiscouragedModules.run
 t/Freenode/DollarAB.run
+t/Freenode/Each.run
 t/Freenode/EmptyReturn.run
 t/Freenode/ModPerl.run
 t/Freenode/OpenArgs.run

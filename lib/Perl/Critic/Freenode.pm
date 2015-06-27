@@ -3,7 +3,7 @@ package Perl::Critic::Freenode;
 use strict;
 use warnings;
 
-our $VERSION = '0.002';
+our $VERSION = '0.003';
 
 1;
 
@@ -49,9 +49,13 @@ Various modules discouraged from use
 
 Don't use C<$a> or C<$b> as variable names outside C<sort()>
 
+=item L<Perl::Critic::Policy::Freenode::Each>
+
+Don't use C<each()> to iterate through a hash
+
 =item L<Perl::Critic::Policy::Freenode::EmptyReturn>
 
-Don't use C<return()> with no arguments
+Don't use C<return> with no arguments
 
 =item L<Perl::Critic::Policy::Freenode::ModPerl>
 
