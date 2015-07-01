@@ -1,3 +1,6 @@
+0.004     2015-07-01 17:21:16 EDT
+  - use default strict/warnings importers from Perl::Critic::Utils::Constants
+
 0.003     2015-06-27 17:53:00 EDT
   - allow prototypes containing &
   - add Each polciy
