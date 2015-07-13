@@ -6,7 +6,7 @@ use warnings;
 use Perl::Critic::Utils qw(:severities :classification :ppi);
 use parent 'Perl::Critic::Policy';
 
-our $VERSION = '0.004';
+our $VERSION = '0.005';
 
 use constant DESC => 'Using $a or $b outside sort()';
 use constant EXPL => '$a and $b are special package variables for use in sort() and related functions. Declaring them as lexicals like "my $a" may break sort(). Use different variable names.';
@@ -26,7 +26,7 @@ my %sorters = (
 
 sub violates {
 	my ($self, $elem) = @_;
-	return () unless $elem eq '$a' or $elem eq '$b';
+	return () unless $elem->symbol eq '$a' or $elem->symbol eq '$b';
 	
 	my $name = $self->_find_sorter($elem);
 	return $self->violation(DESC, EXPL, $elem) unless exists $sorters{$name};
@@ -44,9 +44,9 @@ sub _find_sorter {
 	my $function = $outer->previous_token;
 	$function = $function->previous_token until !$function
 		or ($function->isa('PPI::Token::Word')
-			and (is_method_call $function or is_function_call $function));
+			and (is_method_call $function or is_function_call $function or is_hash_key $function));
 	return '' unless $function and $function->isa('PPI::Token::Word')
-		and (is_method_call $function or is_function_call $function);
+		and (is_method_call $function or is_function_call $function or is_hash_key $function);
 	
 	my $name = $function;
 	$name =~ s/.+:://;
