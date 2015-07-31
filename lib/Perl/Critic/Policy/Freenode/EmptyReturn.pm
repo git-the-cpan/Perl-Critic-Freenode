@@ -8,7 +8,7 @@ use parent 'Perl::Critic::Policy';
 
 use List::Util 'any';
 
-our $VERSION = '0.005';
+our $VERSION = '0.006';
 
 use constant DESC => 'return() called with no arguments';
 use constant EXPL => 'return() with no arguments may return either undef or an empty list depending on context. This can be surprising for the same reason as other context-sensitive returns. Return undef or the empty list explicitly.';
@@ -58,6 +58,11 @@ This policy is part of L<Perl::Critic::Freenode>.
 =head1 CONFIGURATION
 
 This policy is not configurable except for the standard options.
+
+=head1 CAVEATS
+
+This policy currently does not detect an empty return which has a conditional
+modifier, such as C<return if $foo;>.
 
 =head1 AUTHOR
 

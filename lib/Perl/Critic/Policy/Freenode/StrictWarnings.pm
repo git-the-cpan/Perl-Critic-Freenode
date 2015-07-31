@@ -7,7 +7,7 @@ use Perl::Critic::Utils qw(:severities :classification :ppi);
 use Perl::Critic::Utils::Constants qw(@STRICT_EQUIVALENT_MODULES @WARNINGS_EQUIVALENT_MODULES);
 use parent 'Perl::Critic::Policy';
 
-our $VERSION = '0.005';
+our $VERSION = '0.006';
 
 use constant DESC => 'Missing strict or warnings';
 use constant EXPL => 'The strict and warnings pragmas are important to avoid common pitfalls and deprecated/experimental functionality. Make sure each script or module contains "use strict; use warnings;" or a module that does this for you.';
@@ -88,9 +88,13 @@ enabled automatically with a C<use> declaration of perl version 5.12 or higher.
   use 5.012;
   use warnings;
 
-Note: The default modules recognized as importing L<strict> and L<warnings> are
-defined in L<Perl::Critic::Utils::Constants/"@STRICT_EQUIVALENT_MODULES">. To
-define addition modules, see L</"CONFIGURATION">.
+This policy is similar to the core policies
+L<Perl::Critic::Policy::TestingAndDebugging::RequireUseStrict> and
+L<Perl::Critic::Policy::TestingAndDebugging::RequireUseWarnings>, but combines
+them into one policy in the C<freenode> theme. The default modules recognized
+as importing L<strict> and L<warnings> are defined by the same constants as the
+core policies, L<Perl::Critic::Utils::Constants/"@STRICT_EQUIVALENT_MODULES">.
+To define additional modules, see L</"CONFIGURATION">.
 
 =head1 AFFILIATION
 

@@ -6,7 +6,7 @@ use warnings;
 use Perl::Critic::Utils qw(:severities :classification :ppi);
 use parent 'Perl::Critic::Policy';
 
-our $VERSION = '0.005';
+our $VERSION = '0.006';
 
 use constant DESC => 'Using bareword filehandles';
 use constant EXPL => 'Bareword filehandles are a legacy feature, creating the filehandles as package variables. Use lexical, scoped filehandles instead (open my $fh, ...).';
@@ -69,6 +69,11 @@ C<DATA> are ok.
 
   open FH, '<', $filename;     # not ok
   open my $fh, '<', $filename; # ok
+
+This policy is similar to the core policy
+L<Perl::Critic::Policy::InputOutput::ProhibitBarewordFileHandles>, but allows
+more combinations of built-in bareword handles and filehandle-opening functions
+such as C<pipe> and C<socketpair>.
 
 =head1 AFFILIATION
 

@@ -8,7 +8,7 @@ use parent 'Perl::Critic::Policy';
 
 use List::Util 'any';
 
-our $VERSION = '0.005';
+our $VERSION = '0.006';
 
 use constant DESC => 'Using function prototypes';
 use constant EXPL => 'Function prototypes (sub foo ($@) { ... }) will usually not do what you want. Omit the prototype, or use signatures instead.';
@@ -54,8 +54,11 @@ modern method of declaring arguments.
   sub foo { ... }      # ok
   use feature 'signatures'; sub foo ($bar, $baz) { ... } # ok
 
-Note that this policy does not warn about empty prototypes or prototypes
-containing C<&>, as those are often useful for structural behavior.
+This policy is similar to the core policy
+L<Perl::Critic::Policy::Subroutines::ProhibitSubroutinePrototypes>, but
+additionally ignores files using the C<signatures> feature, and allows empty
+prototypes and prototypes containing C<&>, as these are often useful for
+structural behavior.
 
 =head1 AFFILIATION
 
