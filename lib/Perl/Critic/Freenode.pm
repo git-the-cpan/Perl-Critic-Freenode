@@ -3,7 +3,7 @@ package Perl::Critic::Freenode;
 use strict;
 use warnings;
 
-our $VERSION = '0.006';
+our $VERSION = '0.007';
 
 1;
 
@@ -102,6 +102,18 @@ documentation for how to make use of this.
 =head1 AUTHOR
 
 Dan Book, C<dbook@cpan.org>
+
+=head1 CONTRIBUTORS
+
+=over
+
+=item H.Merijn Brand (Tux)
+
+=item John SJ Anderson (genehack)
+
+=item Matt S Trout (mst)
+
+=back
 
 =head1 COPYRIGHT AND LICENSE
 

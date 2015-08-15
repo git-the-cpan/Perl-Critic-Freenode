@@ -6,8 +6,9 @@ use warnings;
 use Perl::Critic::Utils qw(:severities :classification :ppi);
 use Perl::Critic::Utils::Constants qw(@STRICT_EQUIVALENT_MODULES @WARNINGS_EQUIVALENT_MODULES);
 use parent 'Perl::Critic::Policy';
+use version;
 
-our $VERSION = '0.006';
+our $VERSION = '0.007';
 
 use constant DESC => 'Missing strict or warnings';
 use constant EXPL => 'The strict and warnings pragmas are important to avoid common pitfalls and deprecated/experimental functionality. Make sure each script or module contains "use strict; use warnings;" or a module that does this for you.';
@@ -54,7 +55,7 @@ sub violates {
 			$has_warnings = 1 if $include->pragma eq 'warnings';
 		}
 		if ($include->type//'' eq 'use') {
-			$has_strict = 1 if $include->version and $include->version_literal > 5.012;
+			$has_strict = 1 if $include->version and version->parse($include->version) >= version->parse('v5.12');
 			$has_strict = 1 if defined $include->module and exists $strict_importers{$include->module};
 			$has_warnings = 1 if defined $include->module and exists $warnings_importers{$include->module};
 		}
