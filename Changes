@@ -1,3 +1,7 @@
+0.008     2015-08-25 21:42:10 EDT
+  - Various documentation updates
+  - Add Switch.pm to discouraged modules
+
 0.007     2015-08-15 17:18:23 EDT
   - fix StrictWarnings parsing of "use VERSION" (Tux)
   - handle readline/readdir/each in WhileDiamondDefaultAssignment

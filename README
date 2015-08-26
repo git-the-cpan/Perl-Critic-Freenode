@@ -79,7 +79,7 @@ POLICIES
 
     Perl::Critic::Policy::Freenode::WhileDiamondDefaultAssignment
 
-      Don't use while (<>) with implicit assignment to $_
+      Don't use while with implicit assignment to $_
 
 CONFIGURATION AND ENVIRONMENT
 

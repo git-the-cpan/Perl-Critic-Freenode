@@ -8,10 +8,10 @@ use parent 'Perl::Critic::Policy';
 
 use List::Util 'any';
 
-our $VERSION = '0.007';
+our $VERSION = '0.008';
 
-use constant DESC => 'return() called with no arguments';
-use constant EXPL => 'return() with no arguments may return either undef or an empty list depending on context. This can be surprising for the same reason as other context-sensitive returns. Return undef or the empty list explicitly.';
+use constant DESC => 'return called with no arguments';
+use constant EXPL => 'return with no arguments may return either undef or an empty list depending on context. This can be surprising for the same reason as other context-sensitive returns. Return undef or the empty list explicitly.';
 
 sub supported_parameters { () }
 sub default_severity { $SEVERITY_LOWEST }
@@ -50,6 +50,16 @@ return the appropriate value explicitly.
   return;       # not ok
   return ();    # ok
   return undef; # ok
+
+  sub get_stuff {
+    return unless @things;
+    return join(' ', @things);
+  }
+  my %stuff = (
+    one => 1,
+    two => 2,
+    three => get_stuff(), # oops! function returns empty list if @things is empty
+  );
 
 =head1 AFFILIATION
 

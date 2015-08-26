@@ -7,7 +7,7 @@ use Perl::Critic::Utils qw(:severities :classification :ppi);
 use Perl::Critic::Violation;
 use parent 'Perl::Critic::Policy';
 
-our $VERSION = '0.007';
+our $VERSION = '0.008';
 
 sub supported_parameters { () }
 sub default_severity { $SEVERITY_HIGH }
@@ -31,7 +31,7 @@ my %modules = (
 		expl => 'File::Slurp gets file encodings all wrong, line endings on win32 are messed up, and it was written before layers were properly added. Use File::Slurp::Tiny, File::Slurper, Path::Tiny, Data::Munge, or Mojo::Util.',
 	},
 	'HTML::Template' => {
-		expl => 'HTML::Template is an old and buggy module, try Template Toolkit or HTML::Zoom instead, or HTML::Template::Pro if you must use the same syntax.',
+		expl => 'HTML::Template is an old and buggy module, try Template Toolkit, HTML::Zoom, or Text::Template instead, or HTML::Template::Pro if you must use the same syntax.',
 	},
 	'JSON' => {
 		expl => 'JSON.pm is old and full of slow logic. Use JSON::MaybeXS instead, it is a drop-in replacement in most cases.',
@@ -53,6 +53,9 @@ my %modules = (
 	},
 	'Net::IRC' => {
 		expl => 'Net::IRC is an ancient module implementing the IRC protocol. Use a modern event-loop-based module instead. Choices are POE::Component::IRC (and Bot::BasicBot based on that), Net::Async::IRC, and Mojo::IRC.',
+	},
+	'Switch' => {
+		expl => 'Switch.pm is a buggy and outdated source filter which can cause any number of strange errors, in addition to the problems with smart-matching shared by its replacement, the \'switch\' feature (given/when). Try Switch::Plain instead.',
 	},
 	'XML::Simple' => {
 		expl => 'XML::Simple tries to coerce complex XML documents into perl data structures. This leads to overcomplicated structures and unexpected behavior. Use a proper DOM parser instead like XML::LibXML, XML::TreeBuilder, XML::Twig, or Mojo::DOM.',
@@ -119,9 +122,9 @@ L<Data::Munge/"slurp">, or L<Mojo::Util/"slurp">.
 
 =head2 HTML::Template
 
-L<HTML::Template> is an old and buggy module, try L<Template::Toolkit> or
-L<HTML::Zoom> instead, or L<HTML::Template::Pro> if you must use the same
-syntax.
+L<HTML::Template> is an old and buggy module, try L<Template::Toolkit>,
+L<HTML::Zoom>, or L<Text::Template> instead, or L<HTML::Template::Pro> if you
+must use the same syntax.
 
 =head2 JSON
 
@@ -153,6 +156,13 @@ been better filled by L<Moo>. Use L<Moo> instead.
 L<Net::IRC> is an ancient module implementing the IRC protocol. Use a modern
 event-loop-based module instead. Choices are L<POE::Component::IRC> (used for
 L<Bot::BasicBot>), L<Net::Async::IRC>, and L<Mojo::IRC>.
+
+=head2 Switch
+
+L<Switch>.pm is a buggy and outdated source filter which can cause any number
+of strange errors, in addition to the problems with smart-matching shared by
+its replacement, L<feature/"The 'switch' feature"> (C<given>/C<when>). Try
+L<Switch::Plain> instead.
 
 =head2 XML::Simple
 

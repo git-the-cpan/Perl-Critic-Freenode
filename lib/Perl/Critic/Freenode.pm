@@ -3,7 +3,7 @@ package Perl::Critic::Freenode;
 use strict;
 use warnings;
 
-our $VERSION = '0.007';
+our $VERSION = '0.008';
 
 1;
 
@@ -90,7 +90,7 @@ Scripts should not use the C<-w> switch on the shebang line
 
 =item L<Perl::Critic::Policy::Freenode::WhileDiamondDefaultAssignment>
 
-Don't use C<while (E<lt>E<gt>)> with implicit assignment to C<$_>
+Don't use C<while> with implicit assignment to C<$_>
 
 =back
 

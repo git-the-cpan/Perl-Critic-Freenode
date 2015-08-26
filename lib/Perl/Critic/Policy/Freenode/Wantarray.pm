@@ -6,7 +6,7 @@ use warnings;
 use Perl::Critic::Utils qw(:severities :classification :ppi);
 use parent 'Perl::Critic::Policy';
 
-our $VERSION = '0.007';
+our $VERSION = '0.008';
 
 use constant DESC => 'wantarray() called';
 use constant EXPL => 'Context-sensitive functions lead to unexpected errors or vulnerabilities. Functions should explicitly return either a list or a scalar value.';
@@ -43,6 +43,11 @@ potential for confusion or vulnerability.
   return wantarray ? ('a','b','c') : 3; # not ok
   return ('a','b','c');                 # ok
   return 3;                             # ok
+
+  sub get_stuff {
+    return wantarray ? @things : \@things;
+  }
+  my $stuff = Stuff->new(stuff => get_stuff()); # oops! function will return a list!
 
 =head1 AFFILIATION
 
