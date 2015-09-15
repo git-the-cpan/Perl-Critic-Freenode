@@ -3,7 +3,7 @@ package Perl::Critic::Freenode;
 use strict;
 use warnings;
 
-our $VERSION = '0.010';
+our $VERSION = '0.011';
 
 1;
 
@@ -43,6 +43,10 @@ Don't use C<&> to call subroutines
 =item L<Perl::Critic::Policy::Freenode::BarewordFilehandles>
 
 Don't use bareword filehandles other than built-ins
+
+=item L<Perl::Critic::Policy::Freenode::DeprecatedFeatures>
+
+Avoid features that have been deprecated or removed from Perl
 
 =item L<Perl::Critic::Policy::Freenode::DiscouragedModules>
 

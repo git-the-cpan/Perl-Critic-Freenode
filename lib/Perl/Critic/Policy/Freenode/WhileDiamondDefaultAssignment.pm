@@ -6,7 +6,7 @@ use warnings;
 use Perl::Critic::Utils qw(:severities :classification :ppi);
 use parent 'Perl::Critic::Policy';
 
-our $VERSION = '0.010';
+our $VERSION = '0.011';
 
 use constant DESC => '<>/readline/readdir/each result not explicitly assigned in while condition';
 use constant EXPL => 'When used alone in a while condition, the <> operator, readline, readdir, and each functions assign their result to $_, but do not localize it. Assign the result to an explicit lexical variable instead (my $line = <...>, my $dir = readdir ...)';
@@ -24,7 +24,7 @@ my %bad_functions = (
 
 sub violates {
 	my ($self, $elem) = @_;
-	return () unless ($elem eq 'while' or $elem eq 'for') and is_perl_bareword $elem;
+	return () unless $elem eq 'while' or $elem eq 'for';
 	
 	my $next = $elem->snext_sibling || return ();
 	
@@ -49,8 +49,8 @@ sub violates {
 		}
 		
 		return $self->violation(DESC, EXPL, $elem) if $next->isa('PPI::Token::QuoteLike::Readline');
-		if ($next->isa('PPI::Token::Word') and is_function_call $next) {
-			return $self->violation(DESC, EXPL, $elem) if exists $bad_functions{$next};
+		if ($next->isa('PPI::Token::Word') and exists $bad_functions{$next} and is_function_call $next) {
+			return $self->violation(DESC, EXPL, $elem);
 		}
 	}
 	

@@ -1,0 +1,66 @@
+## name GoodFeatures
+## failures 0
+## cut
+
+my $x : Foo = 1;
+use UNIVERSAL;
+use UNIVERSAL ();
+UNIVERSAL->can('foo');
+for my $foo (qw(foo bar)) { ... }
+1 for qw(foo bar);
+do { ... };
+do '...';
+do $foo;
+isalnum $foo;
+isalpha $foo;
+iscntrl $foo;
+isdigit $foo;
+isgraph $foo;
+islower $foo;
+isprint $foo;
+ispunct $foo;
+isspace $foo;
+isupper $foo;
+isxdigit $foo;
+defined $foo;
+defined $foo[0];
+defined $foo{bar};
+defined &foo;
+foo ? bar ? 'foo' : 'bar' : 'baz';
+foo ? bar ? foo : bar : baz;
+$foo =~ m?foo?;
+
+## name BadFeatures
+## failures 11
+## cut
+
+$[ = 1;
+my $x := 1;
+UNIVERSAL->import;
+use UNIVERSAL 'foo';
+for my $foo qw(foo bar) { ... }
+do foo(...);
+do &foo(...);
+do $foo(...);
+defined @foo;
+defined %foo;
+defined(@foo);
+defined(%foo);
+$foo =~ ?foo?;
+
+## name POSIXDeprecations
+## failures 11
+## cut
+
+use POSIX;
+isalnum $foo;
+isalpha $foo;
+iscntrl $foo;
+isdigit $foo;
+isgraph $foo;
+islower $foo;
+isprint $foo;
+ispunct $foo;
+isspace $foo;
+isupper $foo;
+isxdigit $foo;

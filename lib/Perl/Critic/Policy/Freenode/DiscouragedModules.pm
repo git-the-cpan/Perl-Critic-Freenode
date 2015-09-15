@@ -7,7 +7,7 @@ use Perl::Critic::Utils qw(:severities :classification :ppi);
 use Perl::Critic::Violation;
 use parent 'Perl::Critic::Policy';
 
-our $VERSION = '0.010';
+our $VERSION = '0.011';
 
 sub supported_parameters { () }
 sub default_severity { $SEVERITY_HIGH }
@@ -35,6 +35,10 @@ my %modules = (
 	},
 	'File::Slurp' => {
 		expl => 'File::Slurp gets file encodings all wrong, line endings on win32 are messed up, and it was written before layers were properly added. Use File::Slurp::Tiny, File::Slurper, Path::Tiny, Data::Munge, or Mojo::Util.',
+	},
+	'Getopt::Std' => {
+		expl => 'Getopt::Std was the original very simplistic command-line option processing module. It is now obsoleted by the much more complete solution Getopt::Long, which also supports short options, and is wrapped by module such as Getopt::Long::Descriptive and Getopt::Long::Modern for simpler usage.',
+		severity => $SEVERITY_MEDIUM,
 	},
 	'HTML::Template' => {
 		expl => 'HTML::Template is an old and buggy module, try Template Toolkit, HTML::Zoom, or Text::Template instead, or HTML::Template::Pro if you must use the same syntax.',
@@ -142,6 +146,13 @@ L<File::Slurp> gets file encodings all wrong, line endings on win32 are messed
 up, and it was written before layers were properly added. Use
 L<File::Slurp::Tiny>, L<File::Slurper>, L<Path::Tiny/"slurp">,
 L<Data::Munge/"slurp">, or L<Mojo::Util/"slurp">.
+
+=head2 Getopt::Std
+
+L<Getopt::Std> was the original very simplistic command-line option processing
+module. It is now obsoleted by the much more complete solution L<Getopt::Long>,
+which also supports short options, and is wrapped by modules such as
+L<Getopt::Long::Descriptive> and L<Getopt::Long::Modern> for simpler usage.
 
 =head2 HTML::Template
 
