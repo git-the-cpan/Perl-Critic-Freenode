@@ -8,7 +8,7 @@ use Perl::Critic::Utils qw(:severities :classification :ppi);
 use Perl::Critic::Violation;
 use parent 'Perl::Critic::Policy';
 
-our $VERSION = '0.011';
+our $VERSION = '0.012';
 
 sub supported_parameters { () }
 sub default_severity { $SEVERITY_HIGH }
@@ -181,10 +181,10 @@ in perl v5.22.0. Use C<m?PATTERN?> instead.
 
 Using the function C<defined()> on an array or hash probably does not do what
 you expected, and is deprecated in perl v5.6.2 and throws a fatal error in perl
-v5.22.0. To check if an array or hash is non-empty, test the variable directly.
+v5.22.0. To check if an array or hash is non-empty, test if it has elements.
 
  if (@foo) { ... }
- if (%bar) { ... }
+ if (keys %bar) { ... }
 
 =head2 do SUBROUTINE(LIST)
 
@@ -208,7 +208,7 @@ literal in parentheses: C<for my $foo (qw(...)) { ... }>.
 
 =head2 UNIVERSAL->import()
 
-The method C<UNIVERSAL->import()> and similarly passing import arguments to
+The method C<< UNIVERSAL->import() >> and similarly passing import arguments to
 C<use UNIVERSAL> is deprecated in perl v5.12.0 and throws a fatal error in perl
 v5.22.0.
 

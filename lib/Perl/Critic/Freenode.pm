@@ -3,7 +3,7 @@ package Perl::Critic::Freenode;
 use strict;
 use warnings;
 
-our $VERSION = '0.011';
+our $VERSION = '0.012';
 
 1;
 
@@ -44,6 +44,10 @@ Don't use C<&> to call subroutines
 
 Don't use bareword filehandles other than built-ins
 
+=item L<Perl::Critic::Policy::Freenode::ConditionalImplicitReturn>
+
+Don't end a subroutine with a conditional block
+
 =item L<Perl::Critic::Policy::Freenode::DeprecatedFeatures>
 
 Avoid features that have been deprecated or removed from Perl
@@ -71,6 +75,10 @@ Don't use C<mod_perl> to write web applications
 =item L<Perl::Critic::Policy::Freenode::OpenArgs>
 
 Always use the three-argument form of C<open()>
+
+=item L<Perl::Critic::Policy::Freenode::POSIXImports>
+
+Don't use L<POSIX> without specifying an import list
 
 =item L<Perl::Critic::Policy::Freenode::Prototypes>
 
@@ -110,6 +118,8 @@ Dan Book, C<dbook@cpan.org>
 =head1 CONTRIBUTORS
 
 =over
+
+=item Graham Knop (haarg)
 
 =item H.Merijn Brand (Tux)
 

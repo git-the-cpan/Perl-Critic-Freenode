@@ -7,8 +7,9 @@ use Perl::Critic::Utils qw(:severities :classification :ppi);
 use parent 'Perl::Critic::Policy';
 
 use List::Util 'any';
+use Perl::Critic::Freenode::Utils qw(is_empty_return is_structural_block);
 
-our $VERSION = '0.011';
+our $VERSION = '0.012';
 
 use constant DESC => 'return called with no arguments';
 use constant EXPL => 'return with no arguments may return either undef or an empty list depending on context. This can be surprising for the same reason as other context-sensitive returns. Return undef or the empty list explicitly.';
@@ -16,18 +17,25 @@ use constant EXPL => 'return with no arguments may return either undef or an emp
 sub supported_parameters { () }
 sub default_severity { $SEVERITY_LOWEST }
 sub default_themes { 'freenode' }
-sub applies_to { 'PPI::Token::Word' }
-
-my %modifiers = map { ($_ => 1) } qw(if unless while until for foreach when);
+sub applies_to { 'PPI::Statement::Sub' }
 
 sub violates {
 	my ($self, $elem) = @_;
-	return () unless $elem eq 'return';
 	
-	my $next = $elem->snext_sibling;
-	if (!$next or ($next->isa('PPI::Token::Structure') and $next eq ';')
-	           or ($next->isa('PPI::Token::Word') and exists $modifiers{$next})) {
-		return $self->violation(DESC, EXPL, $elem);
+	my $block = $elem->block || return ();
+	my $returns = $block->find(sub {
+		my ($elem, $child) = @_;
+		# Don't search in blocks unless we know they are structural
+		if ($child->isa('PPI::Structure::Block')) {
+			return undef unless is_structural_block($child);
+		}
+		return 1 if $child->isa('PPI::Token::Word') and $child eq 'return';
+		return 0;
+	});
+	
+	# Return a violation for each empty return, if any non-empty return is present
+	if ($returns and any { !is_empty_return($_) } @$returns) {
+		return map { $self->violation(DESC, EXPL, $_) } grep { is_empty_return($_) } @$returns;
 	}
 	
 	return ();
@@ -64,6 +72,21 @@ return the appropriate value explicitly.
     two => 2,
     three => get_stuff(), # oops! function returns empty list if @things is empty
   );
+
+Empty returns are permitted by this policy if the subroutine contains no
+explicit return values, indicating it is intended to be used in void context.
+
+=head1 CAVEATS
+
+This policy currently only checks return statements in named subroutines,
+anonymous subroutines are not checked. Also, return statements within blocks,
+other than compound statements like C<if> and C<foreach>, are not considered
+when determining if a function is intended to be used in void context.
+
+Any non-empty return will cause empty returns within the same subroutine to
+report violations, even though in list context, C<return> and C<return ()> are
+functionally equivalent. It is recommended to explicitly specify an empty list
+return with C<return ()> in a function that intends to return list context.
 
 =head1 AFFILIATION
 

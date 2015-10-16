@@ -33,6 +33,10 @@ POLICIES
 
       Don't use bareword filehandles other than built-ins
 
+    Perl::Critic::Policy::Freenode::ConditionalImplicitReturn
+
+      Don't end a subroutine with a conditional block
+
     Perl::Critic::Policy::Freenode::DeprecatedFeatures
 
       Avoid features that have been deprecated or removed from Perl
@@ -60,6 +64,10 @@ POLICIES
     Perl::Critic::Policy::Freenode::OpenArgs
 
       Always use the three-argument form of open()
+
+    Perl::Critic::Policy::Freenode::POSIXImports
+
+      Don't use POSIX without specifying an import list
 
     Perl::Critic::Policy::Freenode::Prototypes
 
@@ -95,6 +103,8 @@ AUTHOR
     Dan Book, dbook@cpan.org
 
 CONTRIBUTORS
+
+    Graham Knop (haarg)
 
     H.Merijn Brand (Tux)
 

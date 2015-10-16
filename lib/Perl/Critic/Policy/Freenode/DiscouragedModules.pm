@@ -7,7 +7,7 @@ use Perl::Critic::Utils qw(:severities :classification :ppi);
 use Perl::Critic::Violation;
 use parent 'Perl::Critic::Policy';
 
-our $VERSION = '0.011';
+our $VERSION = '0.012';
 
 sub supported_parameters { () }
 sub default_severity { $SEVERITY_HIGH }
@@ -42,6 +42,9 @@ my %modules = (
 	},
 	'HTML::Template' => {
 		expl => 'HTML::Template is an old and buggy module, try Template Toolkit, HTML::Zoom, or Text::Template instead, or HTML::Template::Pro if you must use the same syntax.',
+	},
+	'IO::Socket::INET6' => {
+		expl => 'IO::Socket::INET6 is an old attempt at an IPv6 compatible version of IO::Socket::INET, but has numerous issues and is discouraged by the maintainer in favor of IO::Socket::IP, which transparently creates IPv4 and IPv6 sockets.',
 	},
 	'JSON' => {
 		expl => 'JSON.pm is old and full of slow logic. Use JSON::MaybeXS instead, it is a drop-in replacement in most cases.',
@@ -159,6 +162,13 @@ L<Getopt::Long::Descriptive> and L<Getopt::Long::Modern> for simpler usage.
 L<HTML::Template> is an old and buggy module, try L<Template::Toolkit>,
 L<HTML::Zoom>, or L<Text::Template> instead, or L<HTML::Template::Pro> if you
 must use the same syntax.
+
+=head2 IO::Socket::INET6
+
+L<IO::Socket::INET6> is an old attempt at an IPv6 compatible version of
+L<IO::Socket::INET>, but has numerous issues and is discouraged by the
+maintainer in favor of L<IO::Socket::IP>, which transparently creates IPv4 and
+IPv6 sockets.
 
 =head2 JSON
 
