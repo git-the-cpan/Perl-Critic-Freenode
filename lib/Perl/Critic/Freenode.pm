@@ -3,7 +3,7 @@ package Perl::Critic::Freenode;
 use strict;
 use warnings;
 
-our $VERSION = '0.012';
+our $VERSION = '0.013';
 
 1;
 
@@ -43,6 +43,10 @@ Don't use C<&> to call subroutines
 =item L<Perl::Critic::Policy::Freenode::BarewordFilehandles>
 
 Don't use bareword filehandles other than built-ins
+
+=item L<Perl::Critic::Policy::Freenode::ConditionalDeclarations>
+
+Don't declare variables conditionally
 
 =item L<Perl::Critic::Policy::Freenode::ConditionalImplicitReturn>
 

@@ -33,6 +33,10 @@ POLICIES
 
       Don't use bareword filehandles other than built-ins
 
+    Perl::Critic::Policy::Freenode::ConditionalDeclarations
+
+      Don't declare variables conditionally
+
     Perl::Critic::Policy::Freenode::ConditionalImplicitReturn
 
       Don't end a subroutine with a conditional block
